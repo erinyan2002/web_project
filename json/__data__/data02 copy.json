@@ -1,0 +1,47 @@
+{
+    "date": "2023-10-29",
+    "ranks": [
+        {
+            "rank": "rank1",
+            "articles": [
+                {
+                    "category": "articles_1",
+                    "title": "美 민주당 바이든 지지율 사상 최저치 기록…이·하마스 전쟁 여파",
+                    "text": "조 바이든 미국  yjp@segye.com",
+                    "company": "세계일보",
+                    "reporter": "박영준",
+                    "image_url": "https://www.bigkinds.or.kr/resources/images/01100701/2023/10/27/01100701.20231027075835001.01.jpg"
+                },
+                {
+                    "category": "articles_2",
+                    "title": "'이-팔 전쟁' 특파원, 취재하러 간 병원서 아들·딸 시신 발견하고 오열",
+                    "text": "이스라엘군, 뉴스",
+                    "company": "세계일보",
+                    "reporter": "임우섭 기자",
+                    "image_url": "https://www.bigkinds.or.kr/resources/images/02100501/2023/10/27/02100501.20231027074614001.01.jpg"
+                }
+            ]
+        },
+        {
+            "rank": "rank1",
+            "articles": [
+                {
+                    "category": "articles_1",
+                    "title": "美 민주당 바이든 지지율 사상 최저치 기록…이·하마스 전쟁 여파",
+                    "text": "조 바이든 미국  yjp@segye.com",
+                    "company": "세계일보",
+                    "reporter": "박영준",
+                    "image_url": "https://www.bigkinds.or.kr/resources/images/01100701/2023/10/27/01100701.20231027075835001.01.jpg"
+                },
+                {
+                    "category": "articles_2",
+                    "title": "'이-팔 전쟁' 특파원, 취재하러 간 병원서 아들·딸 시신 발견하고 오열",
+                    "text": "이스라엘군, 뉴스",
+                    "company": "세계일보",
+                    "reporter": "임우섭 기자",
+                    "image_url": "https://www.bigkinds.or.kr/resources/images/02100501/2023/10/27/02100501.20231027074614001.01.jpg"
+                }
+            ]
+        }
+    ]
+}
