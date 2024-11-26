@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 600; /* 通常よりも少し太く */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    overflow: hidden;
+}
+
+/* bunchロゴ */
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 他のスタイル */
+}
+.logo img {
+    margin: 10px 10px;
+    width: 30%;
+    height: 20%;
+}
+
+.container {
+    width: 390px;
+    height: 844px;
+    background-color: #ffffff;
+    overflow: auto;
+    /* オプション: 影を追加 */
+    border-radius: 8px; /* オプション: 角を丸く */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+header, footer {
+    width: 100%;
+    /* position: fixed; */
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+header {
+    top: 0;
+    height: 30px;
+}
+.search-container {
+    width: auto;
+    max-width: 390px; /* ご希望の横幅に */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px 5px 30px;
+    background-color: #ffffff;
+}
+
+.search-input {
+    width: 80%; /* あるいは好みの幅に調整 */
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 30px; /* 丸みを持たせる */
+    outline: none;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: -40px;
+    /* ボタンをインプットの上に重ねるためのマージン */
+}
+
+.search-icon {
+    width: 20px; /* アイコンの横幅を指定 */
+    height: 20px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 390px;
+    height: 80px; /* フッターの高さを指定 */
+    background-color: #ffffff; /* 任意の背景色を指定 */
+    display: flex;
+    justify-content: center; /* 中央に配置 */
+    align-items: top;
+}
+
+
+.icon-container {
+    display: flex;
+    justify-content: space-between; /* アイコンを等間隔に配置 */
+    width: 80%; /* コンテナの幅を調整 */
+}
+
+.footer-icon {
+    margin-top: 10px;
+    width: auto; /* アイコンの横幅を自動に */
+    height: 25px; /* アイコンの縦幅を指定 */
+}
+.my_profile {
+    margin-top: 10px;
+    width: auto; /* アイコンの横幅を自動に */
+    height: 30px; /* アイコンの縦幅を指定 */
+    border-radius: 50%;  /* ここで角の丸みを調整できます */
+}
+
+main {
+    width: auto;
+    flex-grow: 1;
+    overflow-y: auto;
+    /* margin-top: 60px; ヘッダーの高さと同じマージンを上に追加 */
+    /* margin-bottom: 40px; フッターの高さと同じマージンを下に追加 */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent; /* Firefox */
+}
+
+main::-webkit-scrollbar {
+    width: 0px; /* 任意の幅 */
+}
+
+main::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Chrome, Safari, Edge */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 130px); /* 3列の130pxのグリッド */
+    justify-content: center;
+}
+
+.grid-item {
+    position: relative;
+    border: 1px solid white; /* 内側のボーダーを作成 */
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.image-title {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    /* background: rgba(0, 0, 0, 0.5); */
+    color: white;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 9px; /* 글자 크기를 14픽셀로 설정 */;
+}
+
+
+/* テーブル全体のスタイル */
+table {
+    width: 100%; /* テーブルの幅を親要素に合わせる */
+    border-collapse: collapse; /* セルのボーダーを重ねる */
+    margin-bottom: 20px; /* テーブルの下の余白 */
+}
+
+/* ヘッダー行のスタイル */
+thead th {
+    background-color: #f2f2f2; /* 背景色 */
+    color: #333; /* 文字色 */
+    padding: 10px; /* パディング */
+    border-bottom: 1px solid #ddd; /* 下のボーダー */
+}
+
+/* ボディ行のスタイル */
+tbody td {
+    padding: 10px; /* パディング */
+    border-bottom: 1px solid #ddd; /* 下のボーダー */
+    text-align: center; /* テキストを中央に揃える */
+}
+
+/* 行にホバーした時のスタイル */
+tbody tr:hover {
+    background-color: #f5f5f5; /* ホバー時の背景色 */
+}
+
+/* 最後のボディ行のボーダーを消す */
+tbody tr:last-child td {
+    border-bottom: none;
+}

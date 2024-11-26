@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사진 업로드</title>
+    <link rel="stylesheet" href="../css/add.css" />
+    <script src="../js/add.js" defer></script>
+  </head>
+  <body>
+    <div class="upload-container" id="upload-container">
+      <div class="icon-container">
+        <img src="../img/icon/select_photo.svg" alt="사진 선택 아이콘" class="photo_icon" />
+      </div>
+      <h1 class="upload-title">Add Photo Here</h1>
+      <button class="upload-button" id="file-selector-button">사진 선택</button>
+      <input type="file" id="file-input" accept="image/*" hidden />
+    </div>
+
+    <div id="photo-box" class="photo-box hidden">
+      <div class="photo-preview">
+        <img id="preview-img" class="preview-img" alt="사진 미리보기" />
+      </div>
+      <div class="photo-details">
+        <textarea id="photo-description" placeholder="Add Caption"></textarea>
+        <div class="location-controls">
+          <button id="add-location" class="add-button">Add     Location</button>
+          <input
+            type="text"
+            id="location-input"
+            class="hidden location-input"
+            placeholder="Search Location"
+          />
+          <div id="location-dropdown" class="hidden"></div>
+        </div>
+        <button id="add-button" class="add-button">Add To Timeline</button>
+      </div>
+    </div>
+  </body>
+</html>

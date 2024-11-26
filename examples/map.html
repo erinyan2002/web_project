@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko"> <!-- 언어를 한국어로 변경 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, initial-scale=1.0">
+    <title>추억 갤러리</title>
+    <link rel="stylesheet" href="../css/map-styles.css"> <!-- CSS 링크 추가 -->
+    <link rel="stylesheet" href="../css/map.css">
+    <link rel="stylesheet" href="../css/snazzy-info-window.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjKXCt5Qq5LaoyFtovgcA12N8C47tjIRM&callback=initMap"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjKXCt5Qq5LaoyFtovgcA12N8C47tjIRM&callback=initMap"async defer></script> -->
+    <script src="../js/snazzy-info-window.min.js"></script>
+    <script src="../js/map_scripts_new.js"></script>
+    <script src="../js/map_scripts_Popup.js"></script>
+    <!-- <script src="js/map.js"></script> -->
+
+    <!-- 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 헤더 섹션 -->
+        <header>
+            <div class="search-container">
+                <input type="text" placeholder="검색" class="search-input">
+                <button class="search-button">
+                    <img src="../img/icon/search.svg" alt="검색" class="search-icon">
+                </button>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main>
+            <div id="content">
+                <div class="button-container">
+                </div>
+                <div class="map-canvas"></div>
+                <!-- <div class="map"></div> -->
+                <!-- <div id="map_maker"><img src="img/이선균.jpg" alt=""></div> -->
+            </div>
+            <div class="map-card">
+                <div id="category_card">
+                    <img src="../img/icon/category.svg" alt="아이콘" />
+                </div>
+                <div id="neighborhood_card">
+                    <img src="../img/icon/nearby.svg" alt="아이콘2" />
+                </div>
+                <div id="alarm_card">
+                    <img src="../img/icon/alarm.svg" alt="아이콘3" />
+                </div>
+            </div>
+            <div class="popup-overlay" id="categoryPopup">
+                <div class="popup-content">
+                    <!-- 카테고리 선택 버튼 -->
+                    <button class="category-btn">전체</button> <!-- 전체 -->
+                    <button class="category-btn">정치</button> <!-- 정치 -->
+                    <button class="category-btn">경제</button> <!-- 경제 -->
+                    <button class="category-btn">사회</button> <!-- 사회 -->
+                    <button class="category-btn">문화</button> <!-- 문화 -->
+                    <button class="category-btn">국제</button> <!-- 국제 -->
+                    <button class="category-btn">스포츠</button> <!-- 스포츠 -->
+                    <button class="category-btn">IT 과학</button> <!-- IT 과학 -->
+                    <button class="category-btn">건강·의료</button> <!-- 건강·의료 -->
+                    <button class="category-btn">환경</button> <!-- 환경 -->
+                    <!-- 닫기 버튼 -->
+                    <button class="close-btn" onclick="closePopup('categoryPopup')">닫기</button>
+                </div>
+            </div>
+
+
+            <!-- 팝업 오버레이 (알람) -->
+            <div class="popup-overlay" id="alarmPopup">
+                <div class="popup-content">
+                    <!-- 동적으로 테이블을 삽입할 컨테이너 -->
+                    <div id="tableContainer"></div> <!-- 테이블이 여기 삽입됩니다 -->
+
+                    <!-- 닫기 버튼 -->
+                    <button class="close-btn" onclick="closePopup('alarmPopup')">닫기</button>
+                </div>
+            </div>
+        </main>
+
+
+        <!-- 푸터 섹션 -->
+        <footer>
+            <div class="icon-container">
+                <a href="map.html">
+                    <img src="../img/icon/map_01.svg" alt="아이콘 1" class="footer-icon">
+                </a>
+                <a href="add.html">
+                    <img src="../img/icon/add.svg" alt="아이콘 2" class="footer-icon">
+                </a>
+                <a href="home.html">
+                    <img src="../img/icon/home.svg" alt="아이콘 3" class="footer-icon">
+                </a>
+                <a href="index.html">
+                    <img src="../img/icon/search.svg" alt="아이콘 4" class="footer-icon">
+                </a>
+                <a href="profile.html">
+                    <img src="../img/icon/profile.svg" alt="아이콘 5" class="my_profile">
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

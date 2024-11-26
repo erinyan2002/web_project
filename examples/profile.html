@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja"> <!-- 言語をjaに変更 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, initial-scale=1.0">
+    <title>News grem</title>
+    <link rel="top-icon" href="../img/logo/bunch_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSSのリンクを追加（必要であれば） -->
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/widget.css">
+    <!-- font-link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- ヘッダーセクション -->
+        <header>
+            <div class="logo">
+                <!-- SVGファイルを参照する -->
+                <img src="../img/logo/bunch.svg" alt="ロゴ">
+                <img src="../img/icon/3lines_01.svg" id="lines" alt="">
+            </div>
+        </header>
+
+        <main>
+            <section class="profile-section">
+                <div class="profile-header">
+                    <div class="profile">
+                        <img src="../img/v.jpeg" alt="Icon 5" class="profile_icon">
+                        <!-- 名前を表示するための新しいdiv要素を追加 -->
+                        <div class="profile-name">이름</div>
+                    </div>
+                    <div class="stats-container"> <!-- 統計情報を格納するための新しいdiv要素を追加 -->
+                        <div class="number-text-element">
+                            <div class="number">3</div>
+                            <div class="text">구독</div>
+                        </div>
+                        <div class="number-text-element">
+                            <div class="number">68</div>
+                            <div class="text">좋아요</div>
+                        </div>
+                        <div class="number-text-element">
+                            <div class="number">53</div>
+                            <div class="text">저장</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-container">
+                    <!-- <div class="banner"></div> -->
+                    <div class="widget square-widget">
+                        <div class="content">
+                            <img src="../img/icon/subscribe.svg">
+                            <span class="widget-text">회원님의 구독 정보</span>
+                            <img src="../img/logo/bunch.svg" id="company">
+                            <img src="../img/company/경향.png" id="company">
+                        </div>
+                    </div>
+                    <div class="widget square-widget">
+                        <div class="content">
+                            <img src="../img/icon/heart02.svg">
+                            <span class="widget-text">회원님이 좋아한 기사</span>
+                            <div class="article">정부, 슈링크플레이션 실태 조사 착수"</div>
+                            <div class="article">이·하마스 전쟁 등 국제정세 혼란 속 스태그플레이션 불안감</div>
+                            <div class="article">바이든-시진핑, 1년 만에 대면 회담</div>
+                            <div class="article">북한 핵·미사일 대응 전략, 10년 만에 개정</div>
+                        </div>
+                    </div>
+                    <div class="widget rectangle-widget">
+                        <div class="weather-header">
+                            <div class="weather-location">
+                                <span class="location">아산시</span>
+                                <span class="temperature">6°</span>
+                            </div>
+                            <div class="daily-summary">
+                                <span>부분적으로 흐림</span><br> <!-- HTMLにおける改行 -->
+                                <span>최고: 14° 최저: 0°</span>
+                            </div>
+                        </div>
+                        <div class="weather-main">
+                            <div class="hourly-forecast">
+                                <div class="hour">
+                                    <span>오전 10시</span>
+                                    <span class="weather-icon">☁️</span>
+                                    <span>8°</span>
+                                </div>
+                                <div class="hour">
+                                    <span>오전 11시</span>
+                                    <span class="weather-icon">🌤</span>
+                                    <span>11°</span>
+                                </div>
+                                <div class="hour">
+                                    <span>오후 12시</span>
+                                    <span class="weather-icon">🌤</span>
+                                    <span>12°</span>
+                                </div>
+                                <div class="hour">
+                                    <span>오후 12시</span>
+                                    <span class="weather-icon">🌤</span>
+                                    <span>12°</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget square-widget">
+                    </div>
+                    <div class="widget square-widget">
+                    </div>
+                    <div class="widget square-widget">
+                    </div>
+                    <div class="widget square-widget">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+        <!-- フッターセクション -->
+        <footer>
+            <div class="icon-container">
+                <a href="map.html">
+                    <img src="../img/icon/map_01.svg" alt="Icon 1" class="footer-icon">
+                </a>
+                <a href="favorites.html">
+                    <img src="../img/icon/heart.svg" alt="Icon 2" class="footer-icon">
+                </a>
+                <a href="home.html">
+                    <img src="../img/icon/home.svg" alt="Icon 3" class="footer-icon">
+                </a>
+                <a href="index.html">
+                    <img src="../img/icon/search.svg" alt="Icon 4" class="footer-icon">
+                </a>
+                <a href="profile.html">
+                    <img src="../img/v.jpeg" alt="Icon 5" class="my_profile">
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+
+<!-- <div class="content">
+                            <img src="../img/icon/heart02.svg">
+                            <span class="widget-text">회원님이 좋아한 기사</span>
+                            <div class="article">정부, 슈링크플레이션 실태 조사 착수"</div>
+                            <div class="article">이·하마스 전쟁 등 국제정세 혼란 속 스태그플레이션 불안감</div>
+                            <div class="article">바이든-시진핑, 1년 만에 대면 회담</div>
+                            <div class="article">북한 핵·미사일 대응 전략, 10년 만에 개정</div>
+                        </div> -->
