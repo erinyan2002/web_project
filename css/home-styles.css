@@ -9,28 +9,48 @@ body {
   background-color: #f9f9f9;
 }
 
-/* 헤더 */
-.header {
-  background-color: #007bff;
-  color: white;
+header {
+  background-color: pink;
   padding: 10px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
 }
 
-/* 메인 컨텐츠 */
-.main-content {
-  flex: 1;
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.home-title {
+  margin: 0;
+  padding: 0 10px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 20px;
+  background-color: white;
 }
 
 .slideshow-container {
-  width: 80%;
+  width: 90%;
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
@@ -55,63 +75,48 @@ body {
   padding: 10px;
 }
 
-/* 슬라이드쇼 컨트롤 */
-.slideshow-container {
-  width: 90%; /* 화면에 맞게 크기를 조정 */
-  max-width: 400px; /* 최대 크기 제한 */
-  margin: 0 auto;
-  text-align: center;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+.slideshow-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .control-btn {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 5px 15px;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-  margin: 10px 5px;
+  font-size: 16px;
+  margin: 0 10px;
 }
 
 .control-btn:hover {
   background-color: #0056b3;
 }
 
-/* 푸터 */
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+footer {
+  background-color: pink;
+  padding: 10px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -4px 4px -2px rgba(0, 0, 0, 0.2);
 }
 
 .icon-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #ffffff; /* Footer 배경 색 */
-  border-top: 1px solid #ddd;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .footer-icon {
   width: 24px;
   height: 24px;
-  cursor: pointer;
 }
 
-.my_profile {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%; /* 프로필 이미지를 둥글게 */
+.footer-icon:hover {
+  background-color: skyblue;
 }

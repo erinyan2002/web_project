@@ -13,52 +13,53 @@ body {
   .upload-container {
     text-align: center;
     background: white;
-    padding: 30px;
-    border-radius: 10px;
+    padding: 100px;
+    border-radius: 40px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
   
   .icon-container {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   .photo_icon {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
   
   .upload-title {
     font-size: 24px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
   
   .upload-button,
   .add-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    background-color:pink;
+    color: black;
+    padding: 10px 50px;
+    border-radius: 50px;
     font-size: 16px;
     cursor: pointer;
+  
   }
   
   .upload-button:hover,
   .add-button:hover {
-    background-color: #0056b3;
+    background-color: skyblue;
+
   }
   
   /* 사진 박스 스타일 */
   .photo-box {
     display: flex;
-    gap: 20px;
+    gap: 50px;
     align-items: center;
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 50px;
+    padding: 50px;
     background: white;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
   
@@ -80,7 +81,7 @@ body {
   }
   
   .photo-details {
-    display: flex;
+    display: fixed;
     flex-direction: column;
     gap: 10px;
   }
@@ -89,7 +90,7 @@ body {
     width: 100%;
     height: 100px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     border-radius: 5px;
     font-size: 14px;
     resize: none;
@@ -97,18 +98,19 @@ body {
   
   .location-input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 5px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
     font-size: 14px;
   }
   
   #location-dropdown {
     position: absolute;
     background: #fff;
-    border: 1px solid #ddd;
+    border: 10px solid #ddd;
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
   }
+  
   

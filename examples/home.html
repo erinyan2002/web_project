@@ -1,67 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=390, initial-scale=1.0">
-    <title>프로필 페이지</title>
-    <link rel="stylesheet" href="profile.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈</title>
+    <link rel="stylesheet" href="../css/home-styles.css">
+    <script src="../js/home.js" defer></script>
 </head>
-
 <body>
-    <div class="container">
-        <!-- 헤더 섹션 -->
-        <header>
+    <header>
+        <div class="header-container">
+            <h1 class="home-title">HOME</h1>
             <div class="logo">
                 <img src="../img/icon/camera.svg" alt="로고">
-                <img src="../img/icon/3lines_01.svg" id="lines" alt="아이콘">
-            </div>
-        </header>
-
-        <!-- 메인 컨텐츠 -->
-        <main>
-            <section class="profile-section">
-                <div class="profile-header">
-                    <div class="profile">
-                        <img src="../icon/profile.svg" alt="프로필 아이콘" class="profile_icon" id="profile-photo">
-                        <div class="profile-name">이름</div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- 모달 -->
-        <div id="upload-modal" class="modal hidden">
-            <div class="modal-content">
-                <h2>Change Profile Photo</h2>
-                <button id="upload-photo-btn">Upload Photo</button>
-                <button id="remove-photo-btn">Remove Current Photo</button>
-                <button id="cancel-btn">Cancel</button>
+                <h1>MY GALLERY</h1>
             </div>
         </div>
+    </header>
 
-        <!-- 푸터 -->
-        <footer>
-            <div class="icon-container">
-                <a href="map.html">
-                    <img src="../img/icon/map_01.svg" alt="지도 아이콘" class="footer-icon">
-                </a>
-                <a href="favorites.html">
-                    <img src="../img/icon/heart.svg" alt="즐겨찾기 아이콘" class="footer-icon">
-                </a>
-                <a href="home.html">
-                    <img src="../img/icon/home.svg" alt="홈 아이콘" class="footer-icon">
-                </a>
-                <a href="index.html">
-                    <img src="../img/icon/search.svg" alt="검색 아이콘" class="footer-icon">
-                </a>
-                <a href="profile.html">
-                    <img src="../img/icon/profile.svg" alt="프로필 아이콘" class="my_profile">
-                </a>
-            </div>
-        </footer>
-    </div>
-    <script src="profile.js"></script>
+    <main class="main-content">
+        <div class="slideshow-container" id="slideshow-container">
+
+        </div>
+        <div class="slideshow-controls">
+            <button id="prev-btn" class="control-btn">이전</button>
+            <button id="next-btn" class="control-btn">다음</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="icon-container">
+            <a href="map.html">
+                <img src="../img/icon/map_01.svg" alt="지도" class="footer-icon">
+            </a>
+            <a href="add.html">
+                <img src="../img/icon/add.svg" alt="추가" class="footer-icon">
+            </a>
+            <a href="home.html">
+                <img src="../img/icon/home.svg" alt="홈" class="footer-icon">
+            </a>
+            <a href="profile.html">
+                <img src="../img/icon/profile.svg" alt="프로필" class="footer-icon">
+            </a>
+        </div>
+    </footer>
 </body>
-
 </html>

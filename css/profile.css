@@ -3,99 +3,171 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* 화면 전체 높이를 기준으로 설정 */
+  background-color: white;
+  overflow: hidden; /* 스크롤 제거 */
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
+/* 헤더 */
 header {
-  background-color: #ffffff;
-  padding: 10px;
+  background-color: pink;
+  padding: 10px; /* 좌우 패딩 */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px; /* 고정 높이 */
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2); /* 아래 그림자 추가 */
 }
 
-.profile {
+/* 헤더 컨테이너 */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 수직 중앙 정렬 */
+  width: 100%;
+}
+
+/* 메인 */
+main {
+  flex-grow: 1; /* 헤더와 푸터를 제외한 나머지 공간을 채움 */
   display: flex;
   flex-direction: column;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 수평 중앙 정렬 */
+  background-color: white;
+  overflow: hidden; /* 스크롤 제거 */
+}
+
+
+/* 프로필 */
+.profile-title {
+  margin: 0;
+  padding: 10px; /* 왼쪽 여백 조정 */
+  font-size: 20px; /* 텍스트 크기 */
+  text-align: left;
+}
+
+.logo {
+  display: flex;
   align-items: center;
-  margin-top: 20px;
+  gap: 10px; /* 아이콘과 텍스트 사이 간격 */
 }
 
-.profile_icon {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  cursor: pointer;
-}
 
-.profile-name {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* 모달 스타일 */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+/* Profile Picture Card */
+.card {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-}
-
-.modal.hidden {
-  display: none;
-}
-
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content h2 {
   margin-bottom: 20px;
-  font-size: 18px;
 }
 
-.modal-content button {
-  margin: 5px;
-  padding: 10px 20px;
-  border: none;
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Update Image Label */
+.update-label {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  background-color: #e3362c;
+  color: white;
+  padding: 10px;
   border-radius: 5px;
-  font-size: 14px;
   cursor: pointer;
 }
 
-.modal-content button:hover {
-  background-color: #f1f1f1;
+.update-label:hover {
+  background-color: #d32f2f;
 }
 
-/* 푸터 */
+/* Input File */
+.input-file {
+  display: none;
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.input-field {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+
+
+/* Profile Info Container */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수평 중앙 정렬 */
+  gap: 15px; /* 요소 간의 간격 */
+  margin-top: 30px; /* 상단과의 간격 */
+  margin-bottom: 30px; /* 하단과의 간격 */
+}
+
+/* Edit Profile 버튼 */
+.edit-button {
+  background-color: pink;
+  color:black;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
 footer {
-  background-color: #ffffff;
-  padding: 2px;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  background-color: pink;
+  padding: 10px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -4px 4px -2px rgba(0, 0, 0, 0.2);
+  margin-top: 478px;
 }
 
-/* 아이콘 컨테이너 스타일 */
+.icon-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
 
+.footer-icon {
+  width: 24px;
+  height: 24px;
+}
 
+.footer-icon:hover {
+  background-color: skyblue;
+}

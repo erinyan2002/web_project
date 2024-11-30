@@ -1,59 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const profilePhoto = document.getElementById("profile-photo");
-    const modal = document.getElementById("upload-modal");
-    const uploadPhotoBtn = document.getElementById("upload-photo-btn");
-    const removePhotoBtn = document.getElementById("remove-photo-btn");
-    const cancelBtn = document.getElementById("cancel-btn");
+    const editButton = document.getElementById("edit-button");
+    const saveButton = document.getElementById("save-button");
+    const editContainer = document.getElementById("edit-container");
+    const nameInput = document.getElementById("name-input");
+    const bioInput = document.getElementById("bio-input");
 
-    // 프로필 사진 클릭 시 모달 표시
-    profilePhoto.addEventListener("click", () => {
-        modal.classList.remove("hidden");
+    const nameElement = document.getElementById("name");
+    const bioElement = document.getElementById("bio");
+
+    // Edit 버튼 클릭 시 입력창 표시
+    editButton.addEventListener("click", () => {
+        editContainer.style.display = "flex";
+        nameInput.value = nameElement ? nameElement.textContent.trim() : ""; // 현재 이름을 입력창에 표시
+        bioInput.value = bioElement ? bioElement.textContent.trim() : "";   // 현재 bio를 입력창에 표시
+        editButton.style.display = "none"; // Edit 버튼 숨기기
     });
 
-    // 사진 업로드 버튼 클릭 시
-    uploadPhotoBtn.addEventListener("click", () => {
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
+    // Save 버튼 클릭 시 이름과 Bio 저장
+    saveButton.addEventListener("click", () => {
+        const newName = nameInput.value.trim();
+        const newBio = bioInput.value.trim();
 
-        fileInput.addEventListener("change", (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    profilePhoto.src = e.target.result;
-                    modal.classList.add("hidden");
-                    alert("프로필 사진이 변경되었습니다!");
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        if (newName && nameElement) {
+            nameElement.textContent = newName; // 이름 업데이트
+        }
 
-        fileInput.click();
-    });
+        if (newBio && bioElement) {
+            bioElement.textContent = newBio; // Bio 업데이트
+        }
 
-    // 사진 삭제 버튼 클릭 시
-    removePhotoBtn.addEventListener("click", () => {
-        profilePhoto.src = "../icon/profile.svg"; // 기본 이미지로 변경
-        modal.classList.add("hidden");
-        alert("프로필 사진이 삭제되었습니다!");
-    });
-    document.addEventListener("DOMContentLoaded", () => {
-        const profileName = document.getElementById("profile-name");
-        const editProfile = document.getElementById("edit-profile");
-    
-        profile-name.addEventListener("click", () => {
-            alert("Name clicked!");
-        });
-    
-        profile-edit.addEventListener("click", () => {
-            alert("Edit profile clicked!");
-        });
-    });
-    
-
-    // 취소 버튼 클릭 시
-    cancelBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
+        editContainer.style.display = "none"; // 입력창 숨기기
+        editButton.style.display = "block";  // Edit 버튼 다시 표시
     });
 });

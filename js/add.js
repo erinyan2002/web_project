@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedLocation = ""; // 선택된 위치 저장
 
-  // 파일 선택 버튼 클릭 시 파일 선택 창 열기
+  // 파일 선택 버튼 클릭
   fileSelectorButton.addEventListener("click", () => {
     fileInput.click();
   });
@@ -21,46 +21,48 @@ document.addEventListener("DOMContentLoaded", () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        previewImg.src = e.target.result;
-        photoBox.classList.remove("hidden"); // 사진 박스 표시
-        uploadContainer.classList.add("hidden"); // 업로드 컨테이너 숨기기
+        previewImg.src = e.target.result; // 이미지 미리보기
+        photoBox.classList.remove("hidden");
+        uploadContainer.classList.add("hidden");
+        console.log("Image Loaded:", previewImg.src); // 디버깅 로그
       };
       reader.readAsDataURL(file);
+    } else {
+      console.error("No file selected");
     }
   });
 
-  // Add Location 버튼 클릭 시
-  addLocationButton.addEventListener("click", () => {
-    locationInput.classList.remove("hidden");
-    locationInput.focus();
-  });
-
-  // 위치 입력
-  locationInput.addEventListener("input", (event) => {
-    selectedLocation = event.target.value; // 입력값 저장
-  });
-
-  // Add To Timeline 버튼 클릭 시
+  // Add To Home 버튼 클릭
   addButton.addEventListener("click", () => {
     const description = document.getElementById("photo-description").value;
 
-    if (description && previewImg.src) {
-      // 사진 데이터 준비
+    if (previewImg.src && description) {
       const photoData = {
         location: selectedLocation || "위치 정보 없음",
         description: description,
         image: previewImg.src,
       };
 
-      // localStorage에 사진 데이터 저장
-      let savedPhotos = JSON.parse(localStorage.getItem("photos")) || [];
+      // localStorage 저장
+      const savedPhotos = JSON.parse(localStorage.getItem("photos")) || [];
       savedPhotos.push(photoData);
       localStorage.setItem("photos", JSON.stringify(savedPhotos));
 
-      // 홈 페이지로 이동
+      console.log("PhotoSaved :", savedPhotos); // 디버깅 로그
+      alert("사진이 추가되었습니다!");
       window.location.href = "home.html";
     } else {
       alert("모든 정보를 입력하세요.");
     }
+  });
+
+  // 위치 입력 처리
+  addLocationButton.addEventListener("click", () => {
+    locationInput.classList.remove("hidden");
+    locationInput.focus();
+  });
+
+  locationInput.addEventListener("input", (event) => {
+    selectedLocation = event.target.value;
   });
 });
