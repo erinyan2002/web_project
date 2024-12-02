@@ -1,78 +1,136 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>추억 갤러리</title>
-    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 링크 -->
-    <link rel="stylesheet" href="../css/profile.css">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <!-- 헤더 -->
-        <header>
-            <div class="header-container">
-                <h1 class="profile-title">PROFILE</h1>
-                <div class="logo">
-                    <img src="../img/icon/camera.svg" alt="로고">
-                    <h1>MY GALLERY</h1>
-                </div>
-            </div>
-        </header>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1 class="profile-title">PROFILE</h1>
+        <div class="logo">
+          <img src="../img/icon/camera.svg" alt="로고" />
+          <h1>MY GALLERY</h1>
+        </div>
+      </div>
+    </header>
 
-        <!-- 메인 -->
-        <div>
-            
-            <div class="card">
-                <img src="../img/icon/profile.png" id="profile-pic" alt="Profile Picture" class="profile-pic">
-            </div>
-            <label for="input-file" class="update-label">update image</label>
-            <input type="file" accept="image/*" id="input-file" class="input-file">
-            
-            <div class="profile-info">
-                <div id="edit-container" class="edit-container" style="display: none;">
-                    <input type="text" id="name-input" placeholder="Enter your name" class="input-field">
-                    <textarea id="bio-input" placeholder="Enter your bio" class="input-field"></textarea>
-                    <button id="save-button" class="save-button">Save</button>
-                </div>
-                <button id="edit-button" class="edit-button">Edit Profile</button>
-            </div>
-            
-            
-            
-        </main>
+    <main>
+      <div class="card">
+        <img
+          src="../img/icon/profile.png"
+          id="profile-pic"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+      </div>
 
-    <!-- JavaScript -->
+      <label for="input-file" class="update-label">update image</label>
+      <input type="file" accept="image/*" id="input-file" class="input-file" />
+
+      <div class="profile-info">
+        <div id="edit-container" class="edit-container">
+          <input
+            type="text"
+            id="name-input"
+            placeholder="Enter your name"
+            class="input-field"
+            disabled
+          />
+          <textarea
+            id="bio-input"
+            placeholder="Enter your bio"
+            class="input-field"
+            disabled
+          ></textarea>
+          <button id="edit-button" class="edit-button">Edit</button>
+          <button id="save-button" class="save-button" disabled>Save</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="icon-container">
+        <a href="map.html"
+          ><img src="../img/icon/map_01.svg" alt="지도" class="footer-icon"
+        /></a>
+        <a href="add.html"
+          ><img src="../img/icon/add.svg" alt="추가" class="footer-icon"
+        /></a>
+        <a href="../index.html"
+          ><img src="../img/icon/home.svg" alt="홈" class="footer-icon"
+        /></a>
+        <a href="profile.html"
+          ><img src="../img/icon/profile.svg" alt="프로필" class="footer-icon"
+        /></a>
+      </div>
+    </footer>
+
     <script>
-        const profilePic = document.getElementById("profile-pic");
-        const inputFile = document.getElementById("input-file");
+      const profilePic = document.getElementById("profile-pic");
+      const inputFile = document.getElementById("input-file");
+      const nameInput = document.getElementById("name-input");
+      const bioInput = document.getElementById("bio-input");
+      const editButton = document.getElementById("edit-button");
+      const saveButton = document.getElementById("save-button");
 
-        inputFile.addEventListener("change", function() {
-            const file = inputFile.files[0];
-            if (file) {
-                profilePic.src = URL.createObjectURL(file);
-            }
-        });
+      // プロフィール画像の更新と保存
+      inputFile.addEventListener("change", function () {
+        const file = inputFile.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const imageBase64 = event.target.result; // Base64形式
+            profilePic.src = imageBase64;
+
+            // Base64形式の画像をローカルストレージに保存
+            localStorage.setItem("profileImage", imageBase64);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Editボタンの動作
+      editButton.addEventListener("click", () => {
+        nameInput.disabled = false;
+        bioInput.disabled = false;
+        saveButton.disabled = false;
+        editButton.disabled = true; // Editボタンを無効化
+      });
+
+      // Saveボタンの動作
+      saveButton.addEventListener("click", () => {
+        const name = nameInput.value;
+        const bio = bioInput.value;
+
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userBio", bio);
+
+        alert("Profile saved!");
+
+        nameInput.disabled = true;
+        bioInput.disabled = true;
+        saveButton.disabled = true;
+        editButton.disabled = false; // Editボタンを再び有効化
+      });
+
+      // ページロード時に保存されたデータをロード
+      window.addEventListener("load", () => {
+        const savedName = localStorage.getItem("userName");
+        const savedBio = localStorage.getItem("userBio");
+        const savedImage = localStorage.getItem("profileImage");
+
+        if (savedName) nameInput.value = savedName;
+        if (savedBio) bioInput.value = savedBio;
+        if (savedImage) profilePic.src = savedImage;
+      });
     </script>
-</body>
-</html>
-
-<footer>
-    <div class="icon-container">
-        <a href="map.html">
-            <img src="../img/icon/map_01.svg" alt="지도" class="footer-icon">
-        </a>
-        <a href="add.html">
-            <img src="../img/icon/add.svg" alt="추가" class="footer-icon">
-        </a>
-        <a href="index.html">
-            <img src="../img/icon/home.svg" alt="홈" class="footer-icon">
-        </a>
-        <a href="profile.html">
-            <img src="../img/icon/profile.svg" alt="프로필" class="footer-icon">
-        </a>
-    </div>
-</footer>
-</body>
+  </body>
 </html>

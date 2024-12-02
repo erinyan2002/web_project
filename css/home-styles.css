@@ -1,122 +1,45 @@
-/* 기본 스타일 */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+.slideshow-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: #f9f9f9;
-}
-
-header {
-  background-color: pink;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 60px;
-  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header-container {
+.photo-slide {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.home-title {
-  margin: 0;
-  padding: 0 10px;
-  font-size: 20px;
-  text-align: left;
-}
-
-.logo {
-  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: white;
-}
-
-.slideshow-container {
-  width: 90%;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.slide img {
-  width: 100%;
+.slide-image {
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
 }
 
-.caption {
+.slide-details {
+  text-align: left;
   margin-top: 10px;
-  font-size: 16px;
-  color: #333;
-  text-align: center;
-  padding: 10px;
-}
-
-.slideshow-controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
 }
 
 .control-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
+  margin: 10px;
   padding: 10px 20px;
+  background-color: pink;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  margin: 0 10px;
 }
 
 .control-btn:hover {
-  background-color: #0056b3;
+  background-color: lightblue;
 }
 
-footer {
-  background-color: pink;
-  padding: 10px;
-  height: 60px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: 0 -4px 4px -2px rgba(0, 0, 0, 0.2);
-}
-
-.icon-container {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-}
-
-.footer-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.footer-icon:hover {
-  background-color: skyblue;
-}

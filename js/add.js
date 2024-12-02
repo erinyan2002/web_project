@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log("PhotoSaved :", savedPhotos); // 디버깅 로그
       alert("사진이 추가되었습니다!");
-      window.location.href = "index.html";
+      window.location.href = "/";
     } else {
       alert("모든 정보를 입력하세요.");
     }
