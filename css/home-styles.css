@@ -126,9 +126,11 @@
 
 .modal-buttons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly; /* 버튼들 사이에 고르게 간격을 배치 */
+  gap: 10px; /* 버튼 간격 */
   margin-top: 15px;
+  width: 100%;
 }
 .content-data{
   display: flex;
@@ -140,13 +142,14 @@
 .location-data{
   width:  200px;
 }
-#modal-share-btn,
-#modal-delete-btn {
-  padding: 10px 20px;
+#modal-delete-btn,
+#modal-save-btn {
+  padding: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 15px;
+  width: 40px;
+  height: 40px;
 }
 
 #modal-share-btn {

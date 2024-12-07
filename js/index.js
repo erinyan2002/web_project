@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const introScreen = document.getElementById("intro-screen");
   const mainContent = document.getElementById("main-content");
   const enterSiteBtn = document.getElementById("enter-site-btn");
-
+  const modalSaveBtn = document.getElementById("modal-save-btn");
   // Intro Screen 초기화
   const initIntroScreen = () => {
     const introSeen = localStorage.getItem("introSeen");
@@ -158,6 +158,23 @@ document.addEventListener("DOMContentLoaded", () => {
       renderSlider();
     }
   };
+
+  // Save Photo
+  const savePhoto = () => {
+    if (currentIndex !== null && photos[currentIndex]) {
+      const photo = photos[currentIndex];
+      const link = document.createElement("a");
+      link.href = photo.image; // 이미지 URL
+      link.download = `Photo_${currentIndex + 1}.jpg`; // 파일 이름 설정
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      alert("Photo saved successfully!");
+    }
+  };
+
+  // Event listener for SAVE button
+  modalSaveBtn.addEventListener("click", savePhoto);
 
   // Event listeners
   prevBtn.addEventListener("click", showPrev);
