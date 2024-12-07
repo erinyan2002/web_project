@@ -1,36 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Intro screen transition
   const introScreen = document.getElementById("intro-screen");
   const mainContent = document.getElementById("main-content");
   const enterSiteBtn = document.getElementById("enter-site-btn");
 
-// Intro Screen 초기화
-const initIntroScreen = () => {
-  const introSeen = localStorage.getItem("introSeen");
-  if (!introSeen) {
-    introScreen.style.display = "flex";
-  } else {
-    introScreen.style.display = "none";
-  }
-};
+  // Intro Screen 초기화
+  const initIntroScreen = () => {
+    const introSeen = localStorage.getItem("introSeen");
+    if (introSeen === "true") {
+      introScreen.style.display = "none"; // 인트로 화면 숨기기
+      mainContent.classList.remove("hidden"); // 메인 컨텐츠 표시
+    } else {
+      introScreen.style.display = "flex"; // 인트로 화면 표시
+      mainContent.classList.add("hidden"); // 메인 컨텐츠 숨기기
+    }
+  };
 
   enterSiteBtn.addEventListener("click", () => {
     introScreen.style.animation = "fade-out 1s forwards";
     setTimeout(() => {
       introScreen.style.display = "none";
       localStorage.setItem("introSeen", "true"); // 인트로 본 상태 저장
-      mainContent.style.display = "block";
+      mainContent.classList.remove("hidden"); // 메인 컨텐츠 표시
     }, 1000);
   });
 
-  // 사진 추가 후 introScreen 다시 안 나오게 설정
-  const addPhoto = (photoData) => {
-    photos.push(photoData);
-    localStorage.setItem("photos", JSON.stringify(photos));
-    alert("사진이 추가되었습니다!");
-    window.location.href = "/"; // 추가 완료 후 메인 페이지로 이동
-  };
-  
   // Slider and Modal functionality
   const slideContainer = document.querySelector(".slide");
   const modal = document.getElementById("modal");
@@ -67,6 +60,7 @@ const initIntroScreen = () => {
             <div class="content">
               <div class="name">Photo ${index + 1}</div>
               <div class="des">${photo.description || "No description"}</div>
+              <div class="des">${photo.date || "No date"}</div>
               <i class="heart-icon">❤</i>
             </div>
           </div>
@@ -96,7 +90,18 @@ const initIntroScreen = () => {
     currentIndex = parseInt(index, 10);
     const photo = photos[currentIndex];
     modalImage.src = photo.image;
-    modalDescription.textContent = photo.description || "No description available.";
+
+    modalDescription.innerHTML = `
+    <div class="content-data">
+      <p><strong>Description:</strong> ${
+        photo.description || "No description available."
+      }</p>
+      <p><strong>Date:</strong> ${photo.date || "No date available."}</p>
+      <p class="location-data"><strong>Location:</strong> ${
+        photo.location || "No location available."
+      }</p> </div>
+    `;
+
     modal.classList.remove("hidden");
 
     if (likes.includes(currentIndex)) {
@@ -164,4 +169,6 @@ const initIntroScreen = () => {
 
   // Initial render
   renderSlider();
+  // 초기화 함수 호출
+  initIntroScreen();
 });
