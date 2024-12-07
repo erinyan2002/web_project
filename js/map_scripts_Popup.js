@@ -1,4 +1,3 @@
-// JSONデータのサンプル
 var jsonData = [
   { 사건: "강남구 강도사건", 거리: "1km" },
   { 사건: "종로구 폭행사건", 거리: "2km" },
@@ -14,7 +13,6 @@ function createTableFromJson(jsonData) {
   var thead = document.createElement("thead");
   var tbody = document.createElement("tbody");
 
-  // ヘッダー行の作成
   var headerRow = document.createElement("tr");
   Object.keys(jsonData[0]).forEach(function (key) {
     var th = document.createElement("th");
@@ -23,7 +21,6 @@ function createTableFromJson(jsonData) {
   });
   thead.appendChild(headerRow);
 
-  // データ行の作成
   jsonData.forEach(function (item) {
     var tr = document.createElement("tr");
     Object.values(item).forEach(function (val) {
@@ -41,8 +38,8 @@ function createTableFromJson(jsonData) {
 
 function loadTable() {
   var table = createTableFromJson(jsonData);
-  var container = document.querySelector("#alarmPopup .popup-content"); // テーブルを挿入するコンテナ
-  var oldTable = container.querySelector("table"); // 既存のテーブル
+  var container = document.querySelector("#alarmPopup .popup-content");
+  var oldTable = container.querySelector("table");
 
   if (oldTable) {
     container.replaceChild(table, oldTable);
@@ -51,7 +48,6 @@ function loadTable() {
   }
 }
 
-// ページが読み込まれたらテーブルを読み込む
 document.addEventListener("DOMContentLoaded", loadTable);
 
 function openPopup(popupId) {
@@ -63,7 +59,6 @@ function closePopup(popupId) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // ポップアップの外側をクリックしたときに閉じる機能の設定
   document.querySelectorAll(".popup-overlay").forEach(function (popup) {
     popup.addEventListener("click", function (event) {
       if (event.target === this) {
@@ -72,26 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // カテゴリーカードのクリックイベントリスナー
   document
     .getElementById("category_card")
     .addEventListener("click", function () {
       openPopup("categoryPopup");
     });
 
-  // 近隣カードのクリックイベントリスナー
   document
     .getElementById("neighborhood_card")
     .addEventListener("click", function () {
-      // ここに近隣カードに関連するアクションを記述
     });
 
-  // アラームカードのクリックイベントリスナー
   document.getElementById("alarm_card").addEventListener("click", function () {
     openPopup("alarmPopup");
   });
 
-  // 閉じるボタンのクリックイベントリスナー
   document.querySelectorAll(".close-btn").forEach(function (button) {
     button.addEventListener("click", function () {
       var popupId = this.closest(".popup-overlay").id;

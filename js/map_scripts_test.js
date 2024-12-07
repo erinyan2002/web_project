@@ -90,7 +90,6 @@ $(function () {
           content: infoWindowContent,
         });
 
-        // すぐにInfoWindowを開く
         infoWindow.open(map, marker);
 
         marker.addListener("click", function () {

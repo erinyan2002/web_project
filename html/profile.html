@@ -81,31 +81,31 @@
       const editButton = document.getElementById("edit-button");
       const saveButton = document.getElementById("save-button");
 
-      // プロフィール画像の更新と保存
+      
       inputFile.addEventListener("change", function () {
         const file = inputFile.files[0];
         if (file) {
           const reader = new FileReader();
           reader.onload = function (event) {
-            const imageBase64 = event.target.result; // Base64形式
+            const imageBase64 = event.target.result; 
             profilePic.src = imageBase64;
 
-            // Base64形式の画像をローカルストレージに保存
+            
             localStorage.setItem("profileImage", imageBase64);
           };
           reader.readAsDataURL(file);
         }
       });
 
-      // Editボタンの動作
+      
       editButton.addEventListener("click", () => {
         nameInput.disabled = false;
         bioInput.disabled = false;
         saveButton.disabled = false;
-        editButton.disabled = true; // Editボタンを無効化
+        editButton.disabled = true; 
       });
 
-      // Saveボタンの動作
+      
       saveButton.addEventListener("click", () => {
         const name = nameInput.value;
         const bio = bioInput.value;
@@ -118,10 +118,9 @@
         nameInput.disabled = true;
         bioInput.disabled = true;
         saveButton.disabled = true;
-        editButton.disabled = false; // Editボタンを再び有効化
+        editButton.disabled = false; 
       });
 
-      // ページロード時に保存されたデータをロード
       window.addEventListener("load", () => {
         const savedName = localStorage.getItem("userName");
         const savedBio = localStorage.getItem("userBio");

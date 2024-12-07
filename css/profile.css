@@ -21,11 +21,10 @@
 }
 
 .profile-pic {
-  width: 180px;
-  height: 180px;
-  border-radius: 60%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   object-fit: cover;
-  margin-right :800%;
 }
 
 /* Update Image Label */
@@ -33,16 +32,15 @@
   display: block;
   text-align: center;
   margin-top: 10px;
-  background-color: #28a745 ;
+  background-color: #e3362c;
   color: white;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  margin-right :77%;
 }
 
 .update-label:hover {
-  background-color:skyblue;
+  background-color: #d32f2f;
 }
 
 /* Input File */
@@ -76,7 +74,7 @@
 }
 
 .save-button:hover {
-  background-color: skyblue;
+  background-color: #218838;
 }
 
 /* Profile Info Container */
@@ -100,5 +98,5 @@
 }
 
 .edit-button:hover {
-  background-color: skyblue;
+  background-color: #0056b3;
 }

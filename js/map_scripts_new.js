@@ -62,10 +62,8 @@ $(function () {
     disableDefaultUI: true,
   });
 
-  // 既存のマーカーを格納する配列
   var markers = [];
 
-  // 位置データを読み込み、地図にマーカーを配置する
   function loadLocations(jsonPath, zoomLevel) {
     fetch(jsonPath)
       .then((response) => {
@@ -75,7 +73,7 @@ $(function () {
         return response.json();
       })
       .then((data) => {
-        clearMarkers(); // 既存のマーカーをクリア
+        clearMarkers();
         data.forEach(function (location) {
           var markerIcon = {
             url: "../img/icon/ten.svg",
@@ -94,16 +92,15 @@ $(function () {
             content: infoWindowContent,
           });
 
-          // すぐにInfoWindowを開く
           infoWindow.open(map, marker);
 
           marker.addListener("click", function () {
             infoWindow.open(map, marker);
           });
 
-          markers.push(marker); // マーカーを配列に追加
+          markers.push(marker);
         });
-        map.setZoom(zoomLevel); // 地図のズームレベルを設定
+        map.setZoom(zoomLevel);
       })
       .catch((error) => {
         console.error(
@@ -113,21 +110,18 @@ $(function () {
       });
   }
 
-  // 既存のマーカーを全てクリアする
   function clearMarkers() {
     markers.forEach(function (marker) {
-      marker.setMap(null); // マーカーを地図から削除
+      marker.setMap(null);
     });
-    markers = []; // マーカー配列をリセット
+    markers = [];
   }
   $("#alarm_card").click(function () {
-    loadLocations("../json/alarm_locations.json", 12); // 新しいJSONファイルとズームレベル
+    loadLocations("../json/alarm_locations.json", 12);
   });
-  // 近隣カードのクリックイベントリスナー
   $("#neighborhood_card").click(function () {
-    loadLocations("../json/new_locations.json", 14); // 新しいJSONファイルとズームレベル
+    loadLocations("../json/new_locations.json", 14);
   });
 
-  // 初期ロード時にデフォルトのJSONデータを読み込む
   loadLocations("../json/locations.json", 7);
 });
