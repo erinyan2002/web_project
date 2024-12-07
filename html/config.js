@@ -1,7 +1,3 @@
-require('dotenv').config();
-
 const CONFIG = {
-  GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
+  GOOGLE_MAPS_API_KEY: "AIzaSyBdsnmPlig5MniZ_RCSNf5KA_EU1t5I9vA"
 };
-
-module.exports = CONFIG;
