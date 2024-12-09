@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>추억 갤러리</title>
+    <title>프로필</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/profile.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -23,113 +23,56 @@
     </header>
 
     <main>
-      <div class="card">
-        <img
-          src="../img/icon/profile.png"
-          id="profile-pic"
-          alt="Profile Picture"
-          class="profile-pic"
-        />
-      </div>
+      <div id="profile-card" class="profile-card">
+        <!-- 프로필 이미지 -->
+        <div class="profile-image-container">
+          <img
+            src="../img/icon/profile.png"
+            id="profile-pic"
+            alt="프로필 이미지"
+            class="profile-pic"
+          />
+          <input type="file" accept="image/*" id="input-file" class="input-file hidden" />
+        </div>
 
-      <label for="input-file" class="update-label">update image</label>
-      <input type="file" accept="image/*" id="input-file" class="input-file" />
+        <!-- 프로필 이름 및 소개 -->
+        <div class="profile-info-container">
+          <h2 id="profile-name">Your Name</h2>
+          <p id="profile-bio">Your Bio</p>
+        </div>
 
-      <div class="profile-info">
-        <div id="edit-container" class="edit-container">
+        <!-- 버튼 컨테이너 -->
+        <div id="button-container">
+          <button id="edit-button" class="edit-button">Edit Profile</button>
+        </div>
+
+        <!-- 입력 폼 -->
+        <div id="edit-form" class="edit-container hidden">
+          <label for="input-file" id="upload-label" class="update-label">Edit Photo</label>
           <input
             type="text"
             id="name-input"
             placeholder="Enter your name"
             class="input-field"
-            disabled
           />
           <textarea
             id="bio-input"
             placeholder="Enter your bio"
             class="input-field"
-            disabled
           ></textarea>
-          <button id="edit-button" class="edit-button">Edit</button>
-          <button id="save-button" class="save-button" disabled>Save</button>
+          <button id="save-button" class="save-button">Save</button>
         </div>
       </div>
     </main>
 
     <footer>
       <div class="icon-container">
-        <a href="map.html"
-          ><img src="../img/icon/map_01.svg" alt="지도" class="footer-icon"
-        /></a>
-        <a href="add.html"
-          ><img src="../img/icon/add.svg" alt="추가" class="footer-icon"
-        /></a>
-        <a href="../index.html"
-          ><img src="../img/icon/home.svg" alt="홈" class="footer-icon"
-        /></a>
-        <a href="profile.html"
-          ><img src="../img/icon/profile.svg" alt="프로필" class="footer-icon"
-        /></a>
+        <a href="add.html"><img src="../img/icon/add.svg" alt="추가" class="footer-icon" /></a>
+        <a href="../index.html"><img src="../img/icon/home.svg" alt="홈" class="footer-icon" /></a>
+        <a href="profile.html"><img src="../img/icon/profile.svg" alt="프로필" class="footer-icon" /></a>
       </div>
     </footer>
 
-    <script>
-      const profilePic = document.getElementById("profile-pic");
-      const inputFile = document.getElementById("input-file");
-      const nameInput = document.getElementById("name-input");
-      const bioInput = document.getElementById("bio-input");
-      const editButton = document.getElementById("edit-button");
-      const saveButton = document.getElementById("save-button");
-
-      
-      inputFile.addEventListener("change", function () {
-        const file = inputFile.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (event) {
-            const imageBase64 = event.target.result; 
-            profilePic.src = imageBase64;
-
-            
-            localStorage.setItem("profileImage", imageBase64);
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-
-      
-      editButton.addEventListener("click", () => {
-        nameInput.disabled = false;
-        bioInput.disabled = false;
-        saveButton.disabled = false;
-        editButton.disabled = true; 
-      });
-
-      
-      saveButton.addEventListener("click", () => {
-        const name = nameInput.value;
-        const bio = bioInput.value;
-
-        localStorage.setItem("userName", name);
-        localStorage.setItem("userBio", bio);
-
-        alert("Profile saved!");
-
-        nameInput.disabled = true;
-        bioInput.disabled = true;
-        saveButton.disabled = true;
-        editButton.disabled = false; 
-      });
-
-      window.addEventListener("load", () => {
-        const savedName = localStorage.getItem("userName");
-        const savedBio = localStorage.getItem("userBio");
-        const savedImage = localStorage.getItem("profileImage");
-
-        if (savedName) nameInput.value = savedName;
-        if (savedBio) bioInput.value = savedBio;
-        if (savedImage) profilePic.src = savedImage;
-      });
-    </script>
+    <script src="../js/profile.js"></script>
   </body>
 </html>

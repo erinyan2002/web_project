@@ -1,22 +1,16 @@
-/* 프로필 */
-.profile-title {
-  margin: 0;
-  padding: 10px; /* 왼쪽 여백 조정 */
-  font-size: 20px; /* 텍스트 크기 */
-  text-align: left;
+/* 프로필 카드 */
+.profile-card {
+  background-color: white;
+  width: 120%;
+  max-width: 400px;
+  padding: 80px;
+  border-radius: 40px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* 아이콘과 텍스트 사이 간격 */
-}
-
-/* Profile Picture Card */
-.card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.profile-image-container {
+  position: relative;
   margin-bottom: 20px;
 }
 
@@ -25,69 +19,74 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid #4caf50; /* 초록색 테두리 */
 }
 
-/* Update Image Label */
 .update-label {
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-  background-color: #e3362c;
-  color: white;
-  padding: 10px;
+  display: inline-block;
+  background-color: pink;
+  color: black;
+  padding: 10px 15px;
   border-radius: 5px;
+  font-size: 14px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
+.upload-button:hover,
 .update-label:hover {
-  background-color: #d32f2f;
+  background-color: skyblue;
 }
 
-/* Input File */
-.input-file {
-  display: none;
+.hidden {
+  display: none !important;
+}
+
+.profile-info-container {
+  margin-bottom: 20px;
+}
+
+#profile-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+#profile-bio {
+  font-size: 16px;
+  color: #666;
 }
 
 .edit-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: flex-start;
-  margin-top: 20px;
 }
 
 .input-field {
-  width: 250px;
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
 }
 
 .save-button {
-  background-color: #28a745;
+  background-color: #4caf50;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .save-button:hover {
-  background-color: #218838;
+  background-color: #388e3c;
 }
 
-/* Profile Info Container */
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 수평 중앙 정렬 */
-  gap: 15px; /* 요소 간의 간격 */
-  margin-top: 30px; /* 상단과의 간격 */
-  margin-bottom: 30px; /* 하단과의 간격 */
-}
-
-/* Edit Profile 버튼 */
 .edit-button {
   background-color: pink;
   color: black;
@@ -97,6 +96,7 @@
   font-size: 14px;
 }
 
+.upload-button:hover,
 .edit-button:hover {
-  background-color: #0056b3;
+  background-color: skyblue;
 }
