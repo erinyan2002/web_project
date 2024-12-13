@@ -1,5 +1,6 @@
 .container {
   position: relative;
+  margin: 0 auto; /* 중앙 정렬 */
   margin: 20px auto; /* 상하 간격 조정 및 중앙 정렬 */
   max-width: 800px;
   width: 90%;
@@ -13,7 +14,8 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   border-top: 3px solid black; /* 위쪽 선 */
   border-bottom: 3px solid black; /* 아래쪽 선 */
-  overflow-x: hidden;
+  overflow: hidden;
+  flex-direction: column;
 }
 
 /* 사진 그리드 컨테이너 */
