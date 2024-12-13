@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     const profileName = document.getElementById("profile-name");
     const profileBio = document.getElementById("profile-bio");
+
   
     // 이미지 업로드 핸들러
     inputFile.addEventListener("change", function () {

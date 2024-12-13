@@ -13,14 +13,6 @@
     <script defer src="./js/index.js"></script>
   </head>
   <body>
-    <!-- 3D Intro Section -->
-    <div id="intro-screen">
-      <div class="intro-content">
-        <h1>Welcome to My Gallery</h1>
-        <p>Explore your favorite moments in style.</p>
-        <button id="enter-site-btn">Enter Site</button>
-      </div>
-    </div>
 
     <div id="main-content" class="hidden"></div>
     <header>
@@ -34,12 +26,9 @@
     </header>
     <main>
       <div class="container">
-        <div class="slide" id="slide-container"></div>
-        <div class="button">
-          <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
-          <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
+        <!-- 사진 카드 그리드 -->
+    <div class="photo-grid" id="photo-grid"></div>
+  </div>
 
       <!-- Modal for enlarged view -->
       <div id="modal" class="hidden">

@@ -9,7 +9,7 @@
     <script src="../js/add.js" defer></script>
     <style>
       #map {
-        height: 400px;
+        height: 200px;
         width: 100%;
       }
 
@@ -29,6 +29,7 @@
       </div>
     </header>
     <main>
+      <!-- 업로드 컨테이너 -->
       <div class="upload-container" id="upload-container">
         <img
           src="../img/icon/select_photo.svg"
@@ -40,19 +41,30 @@
         <input type="file" id="file-input" accept="image/*" hidden />
       </div>
 
+      <!-- 사진 추가 박스 -->
       <div id="photo-box" class="photo-box hidden">
+        <!-- 사진 미리보기 -->
         <div class="photo-preview">
           <img id="preview-img" class="preview-img" alt="사진 미리보기" />
         </div>
+
+        <!-- 필터 선택 -->
+        <div class="filter-container">
+          <h3>Filters</h3>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="none">Original</button>
+            <button class="filter-btn" data-filter="grayscale(100%)">Grayscale</button>
+            <button class="filter-btn" data-filter="sepia(100%)">Sepia</button>
+            <button class="filter-btn" data-filter="blur(3px)">Blur</button>
+            <button class="filter-btn" data-filter="contrast(150%)">High Contrast</button>
+            <button class="filter-btn" data-filter="brightness(120%)">Brighten</button>
+          </div>
+        </div>
+
+        <!-- 사진 세부 정보 -->
         <div class="photo-details">
           <textarea id="photo-description" placeholder="Add Caption"></textarea>
           <div class="location-controls">
-            <input
-              type="text"
-              id="location-input search-box"
-              class="hidden location-input"
-              placeholder="Search Location"
-            />
             <input
               id="search-box"
               type="text"
@@ -62,7 +74,6 @@
             <div id="map"></div>
             <div id="place-info"></div>
             <button id="add-location" class="add-button">Add Location</button>
-            <div id="location-dropdown" class="hidden"></div>
           </div>
           <button id="add-button" class="add-button">Add To Home</button>
         </div>
@@ -95,7 +106,7 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: 37.7749, lng: -122.4194 }, // Default to San Francisco
+          center: { lat: 37.7749, lng: -122.4194 },
           zoom: 13,
         });
 
@@ -114,19 +125,17 @@
 
           const bounds = new google.maps.LatLngBounds();
           const placeInfoDiv = document.getElementById("place-info");
-          placeInfoDiv.innerHTML = ""; // Clear previous results
+          placeInfoDiv.innerHTML = "";
 
           places.forEach((place) => {
             if (!place.geometry || !place.geometry.location) return;
 
-            // Add marker
             new google.maps.Marker({
               map,
               title: place.name,
               position: place.geometry.location,
             });
 
-            // Append place info
             const placeDetails = `
               <div>
                 <strong>${place.name}</strong><br>

@@ -36,7 +36,7 @@
 
 .upload-button:hover,
 .update-label:hover {
-  background-color: skyblue;
+  background-color: #ff7593;
 }
 
 .hidden {
@@ -98,5 +98,5 @@
 
 .upload-button:hover,
 .edit-button:hover {
-  background-color: skyblue;
+  background-color: #ff7593;
 }

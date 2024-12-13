@@ -6,9 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewImg = document.getElementById("preview-img");
   const addLocationButton = document.getElementById("add-location");
   const addButton = document.getElementById("add-button");
-  const placeInfoDiv = document.getElementById("place-info"); // 장소 정보가 표시되는 요소
+  const placeInfoDiv = document.getElementById("place-info");
 
-  let selectedLocation = ""; // 선택된 위치 저장
+  let selectedLocation = ""; // 위치 저장
+  let selectedFilter = "none"; // 필터 저장
 
   // 파일 선택 버튼 클릭
   fileSelectorButton.addEventListener("click", () => {
@@ -21,13 +22,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        previewImg.src = e.target.result; // 이미지 미리보기
-        photoBox.classList.remove("hidden");
-        uploadContainer.classList.add("hidden");
+        previewImg.src = e.target.result; // 미리보기 이미지 설정
+        previewImg.style.filter = selectedFilter; // 필터 적용
+        photoBox.classList.remove("hidden"); // 사진 박스 표시
+        uploadContainer.classList.add("hidden"); // 업로드 컨테이너 숨김
       };
       reader.readAsDataURL(file);
     } else {
       alert("사진 파일을 선택하세요.");
+    }
+  });
+
+  // 필터 선택
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedFilter = button.getAttribute("data-filter"); // 선택한 필터 저장
+      previewImg.style.filter = selectedFilter; // 미리보기 이미지에 필터 적용
+
+      // 필터 버튼 활성화 상태 업데이트
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
+
+  // 위치 추가 버튼 클릭
+  addLocationButton.addEventListener("click", () => {
+    const locationDetails = placeInfoDiv.innerText.trim(); // 장소 정보 가져오기
+    if (locationDetails) {
+      selectedLocation = locationDetails; // 선택된 위치 저장
+      alert(`위치가 저장되었습니다: ${selectedLocation}`);
+    } else {
+      alert("위치 정보를 입력하거나 선택하세요.");
     }
   });
 
@@ -43,29 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
         location: selectedLocation || "위치 정보 없음",
         description: description,
         image: previewImg.src,
-        date: formattedDate, // 추가된 날짜 필드
+        filter: selectedFilter, // 필터 정보 추가
+        date: formattedDate, // 날짜 정보 추가
       };
 
       // localStorage 저장
+      
       const savedPhotos = JSON.parse(localStorage.getItem("photos")) || [];
       savedPhotos.push(photoData);
       localStorage.setItem("photos", JSON.stringify(savedPhotos));
 
       alert("사진이 추가되었습니다!");
-      window.location.href = "../index.html";
+      window.location.href = "../index.html"; // 홈 화면으로 이동
     } else {
       alert("모든 정보를 입력하세요.");
-    }
-  });
-
-  // Add Location 버튼 클릭
-  addLocationButton.addEventListener("click", () => {
-    const locationDetails = placeInfoDiv.innerText.trim(); // place-info의 텍스트 내용 가져오기
-    if (locationDetails) {
-      selectedLocation = locationDetails; // 선택된 위치에 저장
-      alert(`위치가 저장되었습니다: ${selectedLocation}`);
-    } else {
-      alert("위치 정보를 입력하거나 선택하세요.");
     }
   });
 });

@@ -3,86 +3,99 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1200px;
-  height: 650px;
+  width: 1000px;
+  height: 600px;
   background: #f5f5f5;
-  box-shadow: 0 30px 50px #f5f5f5;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  background: white;
+  padding: 80px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.container .slide {
-  display: flex;
-  gap: 0; /* 사진 간격 없애기 */
-  overflow-x: hidden;
-  width: max-content; /* 사진들 크기만큼 확장 */
-  transition: transform 0.5s ease-in-out;
-}
-
-.container .item {
-  flex: 0 0 auto;
-  width: 250px;
-  height: 350px;
-  background-position: center;
-  background-size: cover;
+/* 카드 그리드 컨테이너 */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
   border-radius: 10px;
-  margin: 0;
-  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2);
+  width: 90%; 
+  height: auto; 
+}
+
+/* 카드 스타일 */
+.photo-card {
   position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-  transform-style: preserve-3d;
-  opacity: 1; /* 기본 상태 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container .item:hover {
-  transform: scale(1.2) rotateY(20deg) rotateX(20deg); /* 더 강렬한 3D 회전 */
-  box-shadow: 0 40px 35px rgba(0, 0, 0, 0.4); /* 그림자 강조 */
-  opacity: 0.7; /* 더 뚜렷한 페이드 효과 */
+.photo-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
-
-.container .item .content {
+/* 좋아요 아이콘 (작은 하트) */
+.photo-card .like-icon {
   position: absolute;
-  bottom: 30px;
-  left: 20px;
-  color: #f5f5f5;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-  opacity: 1; /* 항상 표시 */
-  transition: transform 0.4s ease; /* 마우스 호버 시 텍스트 살짝 움직임 */
-}
-
-.container .item:hover .content {
-  transform: translateZ(10px); /* 텍스트가 살짝 앞으로 튀어나오는 효과 */
-}
-
-.button {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.button button {
-  background: pink;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.9); /* 하트 배경 */
+  color: #ff9eb3;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* 기본 상태: 숨김 */
+  transition: opacity 0.1s ease;
 }
 
-.button button:hover {
-  background: lightblue;
+.photo-card.liked .like-icon {
+  opacity: 1; /* 좋아요 상태: 표시 */
 }
+
+.photo-card .card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+.photo-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-height: 100vh; /* 화면에 맞춤 */
+  overflow-y: auto;  /* 세로 스크롤 */
+}
+
 
 /* Modal styles */
 #modal {
@@ -142,48 +155,57 @@
 .location-data{
   width:  200px;
 }
-#modal-delete-btn,
-#modal-save-btn {
-  padding: 5px;
+#modal-delete-btn,#modal-save-btn {
+  padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
 }
 
-#modal-share-btn {
-  background-color: pink;
+#modal-like-btn {
+  background: none;
+  border: none;
+  color: gray;
+  font-size: 60px;
+  cursor: pointer;
+  margin-bottom: 22px;
+  transition: color 0.1s ease;
 }
 
-#modal-share-btn:hover {
-  background-color: lightblue;
+#modal-like-btn:hover {
+  color: pink;
+}
+
+#modal-like-btn.liked {
+  color: red; /* 좋아요 상태 */
+}
+
+.item.liked .heart-icon {
+  display: block; /* 좋아요 상태인 경우 표시 */
 }
 
 #modal-delete-btn {
-  background-color: red;
   color: white;
 }
 
 #modal-delete-btn:hover {
-  background-color: darkred;
+  background-color: red;
 }
 
-.like-btn {
-  background: none;
-  border: none;
-  color: gray;
-  font-size: 40px;
-  cursor: pointer;
-  transition: color 0.3s ease;
+#modal-save-btn {
+  color: white;
 }
 
-.like-btn.liked {
-  color: red; /* 좋아요 상태 */
-}
-
-.like-btn:hover {
-  color: pink;
+#modal-save-btn:hover {
+  background-color: pink;
+  color: white;
 }
 
 .item .heart-icon {
@@ -195,91 +217,7 @@
   display: none; /* 기본 상태는 숨김 */
 }
 
-.item.liked .heart-icon {
-  display: block; /* 좋아요 상태인 경우 표시 */
-}
-
-
-
-#intro-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  color: white;
-  font-family: Arial, sans-serif;
-  z-index: 9999;
-  animation: intro-animation 1s ease-out;
-}
-
-.intro-content {
-  text-align: center;
-  animation: content-appear 1s ease-out;
-}
-
-.intro-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.intro-content p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-#enter-site-btn {
-  background: white;
-  color: #68210f;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-}
-
-#enter-site-btn:hover {
-  background: #4d2b11;
-  color: white;
-}
-
+/* 숨김 클래스 */
 .hidden {
   display: none;
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-@keyframes intro-animation {
-  from {
-    transform: perspective(800px) rotateX(0deg);
-    opacity: 1;
-  }
-  to {
-    transform: perspective(800px) rotateX(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes content-appear {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
