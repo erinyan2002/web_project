@@ -1,12 +1,9 @@
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1000px;
+  position: relative;
+  margin: 20px auto; /* 상하 간격 조정 및 중앙 정렬 */
+  max-width: 800px;
+  width: 90%;
   height: 600px;
-  background: #f5f5f5;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,20 +11,23 @@
   background: white;
   padding: 80px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-top: 3px solid black; /* 위쪽 선 */
+  border-bottom: 3px solid black; /* 아래쪽 선 */
+  overflow-x: hidden;
 }
 
-/* 카드 그리드 컨테이너 */
-.photo-grid {
+/* 사진 그리드 컨테이너 */
+.photo-grid { 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 모든 사진 크기 동일하게 */
+  gap: 15px; /* 사진 간격 */
   padding: 20px;
   border-radius: 10px;
   width: 90%; 
   height: auto; 
 }
 
-/* 카드 스타일 */
+/* 사진 카드 스타일 */
 .photo-card {
   position: relative;
   background-color: #fff;
@@ -38,11 +38,14 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 사진 이미지 크기 조정 */
 .photo-card img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 100%; /* 부모 요소 높이에 맞춤 */
+  object-fit: cover; /* 비율 유지하며 잘림 */
+  aspect-ratio: 4 / 3; /* 사진 비율을 강제로 고정 */
 }
+
 /* 좋아요 아이콘 (작은 하트) */
 .photo-card .like-icon {
   position: absolute;
@@ -97,15 +100,21 @@
 }
 
 
+
 /* Modal styles */
 #modal {
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 50%; /* 화면 중앙 정렬 */
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 999; /* 최상위 배치 */
 }
 
 #modal.hidden {
