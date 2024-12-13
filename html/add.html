@@ -11,10 +11,49 @@
       #map {
         height: 200px;
         width: 100%;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
       }
 
       #place-info {
         margin-top: 10px;
+        font-size: 14px;
+        color: #555;
+      }
+
+      /* 프로필 정보 스타일 */
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        justify-content: center;
+        margin: 10px 0;
+      }
+
+      .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ff9eb3;
+      }
+
+      .profile-info {
+        text-align: left;
+      }
+
+      .profile-info h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .profile-info p {
+        margin: 0;
+        font-size: 14px;
+        color: #666;
       }
     </style>
   </head>
@@ -37,6 +76,21 @@
           class="photo_icon"
         />
         <h1 class="upload-title">Add Photo Here</h1>
+
+        <!-- 프로필 정보 -->
+        <div class="profile-header">
+          <img
+            id="profile-pic"
+            src="../img/icon/profile.png"
+            alt="프로필 사진"
+            class="profile-pic"
+          />
+          <div class="profile-info">
+            <h3 id="profile-name">Your Name</h3>
+            <p id="profile-bio">Your Bio</p>
+          </div>
+        </div>
+
         <button class="upload-button" id="file-selector-button">Add</button>
         <input type="file" id="file-input" accept="image/*" hidden />
       </div>
@@ -69,7 +123,7 @@
               id="search-box"
               type="text"
               placeholder="Search for a place..."
-              style="width: 300px; padding: 5px"
+              style="width: 100%; padding: 5px;"
             />
             <div id="map"></div>
             <div id="place-info"></div>
@@ -94,69 +148,95 @@
     </footer>
     <script src="config.js"></script>
     <script>
-      async function loadGoogleMapsApi() {
-        const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&libraries=places`;
-        script.defer = true;
-        script.onload = initMap;
-        document.head.appendChild(script);
-      }
+      document.addEventListener("DOMContentLoaded", () => {
+        // 로컬 저장소에서 프로필 데이터 가져오기
+        const savedName = localStorage.getItem("userName");
+        const savedBio = localStorage.getItem("userBio");
+        const savedImage = localStorage.getItem("profileImage");
 
-      let map;
+        const profilePic = document.getElementById("profile-pic");
+        const profileName = document.getElementById("profile-name");
+        const profileBio = document.getElementById("profile-bio");
 
-      function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: 37.7749, lng: -122.4194 },
-          zoom: 13,
-        });
+        if (savedName) profileName.textContent = savedName;
+        if (savedBio) profileBio.textContent = savedBio;
+        if (savedImage) profilePic.src = savedImage;
 
-        const searchBox = new google.maps.places.SearchBox(
-          document.getElementById("search-box")
-        );
+        // Google Maps API 로드
+        async function loadGoogleMapsApi() {
+          const script = document.createElement("script");
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&libraries=places`;
+          script.defer = true;
 
-        map.addListener("bounds_changed", () => {
-          searchBox.setBounds(map.getBounds());
-        });
+          script.onload = () => {
+            console.log("Google Maps API loaded successfully.");
+            initMap();
+          };
 
-        searchBox.addListener("places_changed", () => {
-          const places = searchBox.getPlaces();
+          script.onerror = () => {
+            console.error("Failed to load Google Maps API. Please check the API key and network.");
+            alert("Google Maps API 로드에 실패했습니다. API 키를 확인하세요.");
+          };
 
-          if (places.length === 0) return;
+          document.head.appendChild(script);
+        }
 
-          const bounds = new google.maps.LatLngBounds();
-          const placeInfoDiv = document.getElementById("place-info");
-          placeInfoDiv.innerHTML = "";
+        let map;
 
-          places.forEach((place) => {
-            if (!place.geometry || !place.geometry.location) return;
-
-            new google.maps.Marker({
-              map,
-              title: place.name,
-              position: place.geometry.location,
-            });
-
-            const placeDetails = `
-              <div>
-                <strong>${place.name}</strong><br>
-                ${place.formatted_address || ""}<br>
-                ${place.types ? `Type: ${place.types.join(", ")}` : ""}
-              </div><br>
-            `;
-            placeInfoDiv.innerHTML += placeDetails;
-
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
+        function initMap() {
+          map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 37.7749, lng: -122.4194 },
+            zoom: 13,
           });
 
-          map.fitBounds(bounds);
-        });
-      }
+          const searchBox = new google.maps.places.SearchBox(
+            document.getElementById("search-box")
+          );
 
-      window.onload = loadGoogleMapsApi;
+          map.addListener("bounds_changed", () => {
+            searchBox.setBounds(map.getBounds());
+          });
+
+          searchBox.addListener("places_changed", () => {
+            const places = searchBox.getPlaces();
+
+            if (places.length === 0) return;
+
+            const bounds = new google.maps.LatLngBounds();
+            const placeInfoDiv = document.getElementById("place-info");
+            placeInfoDiv.innerHTML = "";
+
+            places.forEach((place) => {
+              if (!place.geometry || !place.geometry.location) return;
+
+              new google.maps.Marker({
+                map,
+                title: place.name,
+                position: place.geometry.location,
+              });
+
+              const placeDetails = `
+                <div>
+                  <strong>${place.name}</strong><br>
+                  ${place.formatted_address || ""}<br>
+                  ${place.types ? `Type: ${place.types.join(", ")}` : ""}
+                </div><br>
+              `;
+              placeInfoDiv.innerHTML += placeDetails;
+
+              if (place.geometry.viewport) {
+                bounds.union(place.geometry.viewport);
+              } else {
+                bounds.extend(place.geometry.location);
+              }
+            });
+
+            map.fitBounds(bounds);
+          });
+        }
+
+        loadGoogleMapsApi();
+      });
     </script>
   </body>
 </html>
