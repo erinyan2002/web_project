@@ -2,6 +2,9 @@
 
 ---
 
+![web영상](https://github.com/user-attachments/assets/6912400e-ebe8-47d5-bea5-6d6950720fa6)
+
+
 ## **1. 프로필 관리 화면**  
 ![화면 캡처 2024-12-13 214643](https://github.com/user-attachments/assets/4df6bda0-fe29-4982-a37e-37e2c0e89637)
 
